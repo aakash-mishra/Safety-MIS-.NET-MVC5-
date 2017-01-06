@@ -1,0 +1,50 @@
+﻿@model NTPC_SAFETY.Models.Report
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Report</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastSubmitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastSubmitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsThisMonthReport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsThisMonthReport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

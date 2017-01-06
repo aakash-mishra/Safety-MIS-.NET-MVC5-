@@ -1,0 +1,261 @@
+﻿@model IEnumerable<NTPC_SAFETY.Models.SafetyForm>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@Html.ActionLink("Create New Safety Report", "Create")
+<br />
+@Html.ActionLink("View Reports status", "Index", "Reports" )<br />
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by Project Name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.ProjNameSortParm })
+        </th>
+
+        <th>
+            @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+
+        <th>
+            @Html.DisplayName("Safety Tip")
+        </th>
+        <th>
+            @Html.DisplayName("Trainings To Trainers")
+        </th>
+        <th>
+            @Html.DisplayName("Risk Governance")
+        </th>
+        <th>
+            @Html.DisplayName("Training To Contractor")
+        </th>
+        <th>
+            @Html.DisplayName("Training To NTPC Eng")
+        </th>
+        <th>
+            @Html.DisplayName("Training To Hods")
+        </th>
+        <th>
+            @Html.DisplayName("Safety Policy Display")
+        </th>
+        <th>
+            @Html.DisplayName("Start Of Meetings With Safety")
+        </th>
+        <th>
+            @Html.DisplayName("Distribution Of PPES")
+        </th>
+        <th>
+            @Html.DisplayName("Entry With PPES")
+        </th>
+        <th>
+            @Html.DisplayName("Safety Control Room Func")
+        </th>
+        <th>
+            @Html.DisplayName("Screening Of Safety Films")
+        </th>
+        <th>
+            @Html.DisplayName("OverHauls Under DUPONT")
+        </th>
+        <th>
+            @Html.DisplayName("Safety Contracts Mgmt")
+        </th>
+        <th>
+            @Html.DisplayName("Revised Safety Provisions")
+        </th>
+        <th>
+            @Html.DisplayName("Safety Process Mgmt")
+        </th>
+        <th>
+            @Html.DisplayName("Internal Audits")
+        </th>
+        <th>
+            @Html.DisplayName("Intenal Audits Action Taken")
+        </th>
+        <th>
+            @Html.DisplayName("Internal Audit Schedule")
+        </th>
+        <th>
+            @Html.DisplayName("External Audits")
+        </th>
+        <th>
+            @Html.DisplayName("External Audits Action Taken")
+        </th>
+        <th>
+            @Html.DisplayName("External Audit Schedule")
+        </th>
+        <th>
+            @Html.DisplayName("Compliance")
+        </th>
+        <th>
+            @Html.DisplayName("Internal MOU")
+        </th>
+        <th>
+            @Html.DisplayName("Article Of The Month")
+        </th>
+        <th>
+            @Html.DisplayName("Safety In Business Model")
+        </th>
+        <th>
+            @Html.DisplayName("Replace Old Concrete Slabs")
+        </th>
+        <th>
+            @Html.DisplayName("Protection Of Structures")
+        </th>
+        <th>
+            @Html.DisplayName("Dividing Plant Into Areas")
+        </th>
+        <th>
+            @Html.DisplayName("CheckList For Engineers")
+        </th>
+        <th>
+            @Html.DisplayName("Mock Drills Status")
+        </th>
+        <th>
+            @Html.DisplayName("Factory Occupier Declaration Status")
+        </th>
+        
+        <th>
+            @Html.DisplayName("ATR On Directors")
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            
+            @Html.DisplayFor(modelItem => item.Project.ProjName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyTip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingsToTrainers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskGovernance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingToContractor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingToNTPCEng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrainingToHods)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyPolicyDisplay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartOfMeetingsWithSafety)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistributionOfPPES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntryWithPPES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyControlRoomFunc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScreeningOfSafetyFilms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverHaulsUnderDUPONT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyContractsMgmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RevisedSafetyProvisions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyProcessMgmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InternalAudits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IntenalAuditsActionTaken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InternalAuditSchedule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalAudits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalAuditsActionTaken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExternalAuditSchedule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Compliance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InternalMOU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArticleOfTheMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyInBusinessModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReplaceOldConcreteSlabs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProtectionOfStructures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DividingPlantIntoAreas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckListForEngineers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MockDrillsStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FactoryOccupierDeclarationStatus)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ATROnDirectors)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+            <input type="button" value="Audit Form" onclick="window.location.href='@Url.Action("Audit", "SafetyForms", new { id=item.ID })'" />
+        </td>
+    </tr>
+}
+
+</table>

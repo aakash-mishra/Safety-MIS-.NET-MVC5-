@@ -1,0 +1,306 @@
+﻿@model NTPC_SAFETY.Models.SafetyForm
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SafetyForm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyTip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyTip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingsToTrainers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingsToTrainers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RiskGovernance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RiskGovernance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingToContractor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingToContractor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingToNTPCEng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingToNTPCEng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrainingToHods)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrainingToHods)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyPolicyDisplay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyPolicyDisplay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartOfMeetingsWithSafety)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartOfMeetingsWithSafety)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DistributionOfPPES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistributionOfPPES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryWithPPES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryWithPPES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyControlRoomFunc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyControlRoomFunc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScreeningOfSafetyFilms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScreeningOfSafetyFilms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OverHaulsUnderDUPONT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OverHaulsUnderDUPONT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyContractsMgmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyContractsMgmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RevisedSafetyProvisions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RevisedSafetyProvisions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyProcessMgmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyProcessMgmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InternalAudits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InternalAudits)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntenalAuditsActionTaken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntenalAuditsActionTaken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InternalAuditSchedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InternalAuditSchedule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternalAudits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternalAudits)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternalAuditsActionTaken)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternalAuditsActionTaken)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExternalAuditSchedule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExternalAuditSchedule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Compliance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compliance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InternalMOU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InternalMOU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleOfTheMonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleOfTheMonth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SafetyInBusinessModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SafetyInBusinessModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReplaceOldConcreteSlabs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReplaceOldConcreteSlabs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProtectionOfStructures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProtectionOfStructures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DividingPlantIntoAreas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DividingPlantIntoAreas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckListForEngineers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckListForEngineers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MockDrillsStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MockDrillsStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FactoryOccupierDeclarationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FactoryOccupierDeclarationStatus)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ATROnDirectors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATROnDirectors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

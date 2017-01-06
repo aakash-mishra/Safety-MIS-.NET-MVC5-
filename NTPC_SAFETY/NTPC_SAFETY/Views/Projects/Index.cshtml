@@ -1,0 +1,52 @@
+﻿@model IEnumerable<NTPC_SAFETY.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SafetyHead)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjCode)
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SafetyHead)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjCode)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProjCode }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProjCode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProjCode })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("List of Users", "Index", "Users")<br />
+    @Html.ActionLink("Safety Forms", "Index", "SafetyForms")
+</div>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NTPCProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="NTPCProjectEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+    <EntitySet Name="Projects" EntityType="NTPCProjectModel.Project" />
+    <EntitySet Name="SafetyForms" EntityType="NTPCProjectModel.SafetyForm" />
+    <AssociationSet Name="FK_ProjCode" Association="NTPCProjectModel.FK_ProjCode">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="SafetyForm" EntitySet="SafetyForms" />
+    </AssociationSet>
+    <EntitySet Name="Reports" EntityType="NTPCProjectModel.Report" />
+    <AssociationSet Name="Foreign_ProjCode" Association="NTPCProjectModel.Foreign_ProjCode">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="NTPCProjectModel.User" />
+    <AssociationSet Name="FK_ProjectCode" Association="NTPCProjectModel.FK_ProjectCode">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjCode" />
+    </Key>
+    <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="ProjName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SafetyHead" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SafetyForms" Relationship="NTPCProjectModel.FK_ProjCode" FromRole="Project" ToRole="SafetyForm" />
+    <NavigationProperty Name="Reports" Relationship="NTPCProjectModel.Foreign_ProjCode" FromRole="Project" ToRole="Report" />
+    <NavigationProperty Name="Users" Relationship="NTPCProjectModel.FK_ProjectCode" FromRole="Project" ToRole="User" />
+  </EntityType>
+  <EntityType Name="SafetyForm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SafetyTip" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TrainingsToTrainers" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RiskGovernance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrainingToContractor" Type="Int32" />
+    <Property Name="TrainingToNTPCEng" Type="Int32" />
+    <Property Name="TrainingToHods" Type="Int32" />
+    <Property Name="SafetyPolicyDisplay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartOfMeetingsWithSafety" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DistributionOfPPES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EntryWithPPES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SafetyControlRoomFunc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ScreeningOfSafetyFilms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OverHaulsUnderDUPONT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SafetyContractsMgmt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RevisedSafetyProvisions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SafetyProcessMgmt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InternalAudits" Type="Int32" />
+    <Property Name="IntenalAuditsActionTaken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InternalAuditSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExternalAudits" Type="Int32" />
+    <Property Name="ExternalAuditsActionTaken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExternalAuditSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Compliance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InternalMOU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ArticleOfTheMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SafetyInBusinessModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReplaceOldConcreteSlabs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProtectionOfStructures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DividingPlantIntoAreas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CheckListForEngineers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MockDrillsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FactoryOccupierDeclarationStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ATROnDirectors" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lock" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="NTPCProjectModel.FK_ProjCode" FromRole="SafetyForm" ToRole="Project" />
+  </EntityType>
+  <Association Name="FK_ProjCode">
+    <End Type="NTPCProjectModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="NTPCProjectModel.SafetyForm" Role="SafetyForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjCode" />
+      </Principal>
+      <Dependent Role="SafetyForm">
+        <PropertyRef Name="ProjCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="ProjName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastSubmitDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IsThisMonthReport" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="NTPCProjectModel.Foreign_ProjCode" FromRole="Report" ToRole="Project" />
+  </EntityType>
+  <Association Name="Foreign_ProjCode">
+    <End Type="NTPCProjectModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="NTPCProjectModel.Report" Role="Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjCode" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="ProjCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="ProjName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EmpName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Admin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="NTPCProjectModel.FK_ProjectCode" FromRole="User" ToRole="Project" />
+  </EntityType>
+  <Association Name="FK_ProjectCode">
+    <End Type="NTPCProjectModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="NTPCProjectModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjCode" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="ProjCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,52 @@
+﻿@model NTPC_SAFETY.Models.User
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+
+    <div class="NTPC">
+        <img src="~/Content/Images/NTPC.png" />
+    </div>
+
+    <h1>SAFETY MANAGEMENT INFORMATION SYSTEM</h1>
+
+
+</div>
+@using (Html.BeginForm())
+{
+   
+
+    <div class="form-horizontal">
+        <h4>Login</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmpID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EmpID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmpID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+
+      
+

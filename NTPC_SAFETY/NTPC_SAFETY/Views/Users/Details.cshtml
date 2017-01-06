@@ -1,0 +1,50 @@
+﻿@model NTPC_SAFETY.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

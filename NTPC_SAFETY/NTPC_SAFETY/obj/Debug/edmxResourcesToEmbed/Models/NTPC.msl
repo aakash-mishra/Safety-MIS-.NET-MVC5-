@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NTPCProjectModelStoreContainer" CdmEntityContainer="NTPCProjectEntities1">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="NTPCProjectModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="NTPCProjectModel.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="SafetyHead" ColumnName="SafetyHead" />
+          <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+          <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SafetyForms">
+      <EntityTypeMapping TypeName="NTPCProjectModel.SafetyForm">
+        <MappingFragment StoreEntitySet="SafetyForm">
+          <ScalarProperty Name="Lock" ColumnName="Lock" />
+          <ScalarProperty Name="ATROnDirectors" ColumnName="ATROnDirectors" />
+          <ScalarProperty Name="FactoryOccupierDeclarationStatus" ColumnName="FactoryOccupierDeclarationStatus" />
+          <ScalarProperty Name="MockDrillsStatus" ColumnName="MockDrillsStatus" />
+          <ScalarProperty Name="CheckListForEngineers" ColumnName="CheckListForEngineers" />
+          <ScalarProperty Name="DividingPlantIntoAreas" ColumnName="DividingPlantIntoAreas" />
+          <ScalarProperty Name="ProtectionOfStructures" ColumnName="ProtectionOfStructures" />
+          <ScalarProperty Name="ReplaceOldConcreteSlabs" ColumnName="ReplaceOldConcreteSlabs" />
+          <ScalarProperty Name="SafetyInBusinessModel" ColumnName="SafetyInBusinessModel" />
+          <ScalarProperty Name="ArticleOfTheMonth" ColumnName="ArticleOfTheMonth" />
+          <ScalarProperty Name="InternalMOU" ColumnName="InternalMOU" />
+          <ScalarProperty Name="Compliance" ColumnName="Compliance" />
+          <ScalarProperty Name="ExternalAuditSchedule" ColumnName="ExternalAuditSchedule" />
+          <ScalarProperty Name="ExternalAuditsActionTaken" ColumnName="ExternalAuditsActionTaken" />
+          <ScalarProperty Name="ExternalAudits" ColumnName="ExternalAudits" />
+          <ScalarProperty Name="InternalAuditSchedule" ColumnName="InternalAuditSchedule" />
+          <ScalarProperty Name="IntenalAuditsActionTaken" ColumnName="IntenalAuditsActionTaken" />
+          <ScalarProperty Name="InternalAudits" ColumnName="InternalAudits" />
+          <ScalarProperty Name="SafetyProcessMgmt" ColumnName="SafetyProcessMgmt" />
+          <ScalarProperty Name="RevisedSafetyProvisions" ColumnName="RevisedSafetyProvisions" />
+          <ScalarProperty Name="SafetyContractsMgmt" ColumnName="SafetyContractsMgmt" />
+          <ScalarProperty Name="OverHaulsUnderDUPONT" ColumnName="OverHaulsUnderDUPONT" />
+          <ScalarProperty Name="ScreeningOfSafetyFilms" ColumnName="ScreeningOfSafetyFilms" />
+          <ScalarProperty Name="SafetyControlRoomFunc" ColumnName="SafetyControlRoomFunc" />
+          <ScalarProperty Name="EntryWithPPES" ColumnName="EntryWithPPES" />
+          <ScalarProperty Name="DistributionOfPPES" ColumnName="DistributionOfPPES" />
+          <ScalarProperty Name="StartOfMeetingsWithSafety" ColumnName="StartOfMeetingsWithSafety" />
+          <ScalarProperty Name="SafetyPolicyDisplay" ColumnName="SafetyPolicyDisplay" />
+          <ScalarProperty Name="TrainingToHods" ColumnName="TrainingToHods" />
+          <ScalarProperty Name="TrainingToNTPCEng" ColumnName="TrainingToNTPCEng" />
+          <ScalarProperty Name="TrainingToContractor" ColumnName="TrainingToContractor" />
+          <ScalarProperty Name="RiskGovernance" ColumnName="RiskGovernance" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TrainingsToTrainers" ColumnName="TrainingsToTrainers" />
+          <ScalarProperty Name="SafetyTip" ColumnName="SafetyTip" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="NTPCProjectModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="IsThisMonthReport" ColumnName="IsThisMonthReport" />
+          <ScalarProperty Name="LastSubmitDate" ColumnName="LastSubmitDate" />
+          <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+          <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="NTPCProjectModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+          <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NTPCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="ProjCode" />
+    </Key>
+    <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="ProjName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SafetyHead" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="ProjName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastSubmitDate" Type="date" Nullable="false" />
+    <Property Name="IsThisMonthReport" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SafetyForm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="SafetyTip" Type="text" Nullable="false" />
+    <Property Name="TrainingsToTrainers" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RiskGovernance" Type="varchar" MaxLength="50" />
+    <Property Name="TrainingToContractor" Type="int" />
+    <Property Name="TrainingToNTPCEng" Type="int" />
+    <Property Name="TrainingToHods" Type="int" />
+    <Property Name="SafetyPolicyDisplay" Type="varchar" MaxLength="50" />
+    <Property Name="StartOfMeetingsWithSafety" Type="varchar" MaxLength="50" />
+    <Property Name="DistributionOfPPES" Type="varchar" MaxLength="50" />
+    <Property Name="EntryWithPPES" Type="varchar" MaxLength="50" />
+    <Property Name="SafetyControlRoomFunc" Type="varchar" MaxLength="50" />
+    <Property Name="ScreeningOfSafetyFilms" Type="varchar" MaxLength="50" />
+    <Property Name="OverHaulsUnderDUPONT" Type="varchar" MaxLength="50" />
+    <Property Name="SafetyContractsMgmt" Type="varchar" MaxLength="50" />
+    <Property Name="RevisedSafetyProvisions" Type="varchar" MaxLength="50" />
+    <Property Name="SafetyProcessMgmt" Type="varchar" MaxLength="50" />
+    <Property Name="InternalAudits" Type="int" />
+    <Property Name="IntenalAuditsActionTaken" Type="varchar" MaxLength="50" />
+    <Property Name="InternalAuditSchedule" Type="varchar" MaxLength="50" />
+    <Property Name="ExternalAudits" Type="int" />
+    <Property Name="ExternalAuditsActionTaken" Type="varchar" MaxLength="50" />
+    <Property Name="ExternalAuditSchedule" Type="varchar" MaxLength="50" />
+    <Property Name="Compliance" Type="varchar" MaxLength="50" />
+    <Property Name="InternalMOU" Type="varchar" MaxLength="50" />
+    <Property Name="ArticleOfTheMonth" Type="varchar" MaxLength="50" />
+    <Property Name="SafetyInBusinessModel" Type="varchar" MaxLength="50" />
+    <Property Name="ReplaceOldConcreteSlabs" Type="varchar" MaxLength="50" />
+    <Property Name="ProtectionOfStructures" Type="varchar" MaxLength="50" />
+    <Property Name="DividingPlantIntoAreas" Type="varchar" MaxLength="50" />
+    <Property Name="CheckListForEngineers" Type="varchar" MaxLength="50" />
+    <Property Name="MockDrillsStatus" Type="varchar" MaxLength="50" />
+    <Property Name="FactoryOccupierDeclarationStatus" Type="varchar" MaxLength="50" />
+    <Property Name="ATROnDirectors" Type="varchar" MaxLength="50" />
+    <Property Name="Lock" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="ProjName" Type="text" Nullable="false" />
+    <Property Name="EmpName" Type="text" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Admin" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ProjCode">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="SafetyForm" Type="Self.SafetyForm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ProjCode" />
+      </Principal>
+      <Dependent Role="SafetyForm">
+        <PropertyRef Name="ProjCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectCode">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ProjCode" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="ProjCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Foreign_ProjCode">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ProjCode" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="ProjCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NTPCProjectModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SafetyForm" EntityType="Self.SafetyForm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ProjCode" Association="Self.FK_ProjCode">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="SafetyForm" EntitySet="SafetyForm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectCode" Association="Self.FK_ProjectCode">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Foreign_ProjCode" Association="Self.Foreign_ProjCode">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

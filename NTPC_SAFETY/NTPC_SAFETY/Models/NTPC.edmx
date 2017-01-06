@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NTPCProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="ProjCode" />
+          </Key>
+          <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="ProjName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SafetyHead" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="ProjName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastSubmitDate" Type="date" Nullable="false" />
+          <Property Name="IsThisMonthReport" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SafetyForm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="SafetyTip" Type="text" Nullable="false" />
+          <Property Name="TrainingsToTrainers" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RiskGovernance" Type="varchar" MaxLength="50" />
+          <Property Name="TrainingToContractor" Type="int" />
+          <Property Name="TrainingToNTPCEng" Type="int" />
+          <Property Name="TrainingToHods" Type="int" />
+          <Property Name="SafetyPolicyDisplay" Type="varchar" MaxLength="50" />
+          <Property Name="StartOfMeetingsWithSafety" Type="varchar" MaxLength="50" />
+          <Property Name="DistributionOfPPES" Type="varchar" MaxLength="50" />
+          <Property Name="EntryWithPPES" Type="varchar" MaxLength="50" />
+          <Property Name="SafetyControlRoomFunc" Type="varchar" MaxLength="50" />
+          <Property Name="ScreeningOfSafetyFilms" Type="varchar" MaxLength="50" />
+          <Property Name="OverHaulsUnderDUPONT" Type="varchar" MaxLength="50" />
+          <Property Name="SafetyContractsMgmt" Type="varchar" MaxLength="50" />
+          <Property Name="RevisedSafetyProvisions" Type="varchar" MaxLength="50" />
+          <Property Name="SafetyProcessMgmt" Type="varchar" MaxLength="50" />
+          <Property Name="InternalAudits" Type="int" />
+          <Property Name="IntenalAuditsActionTaken" Type="varchar" MaxLength="50" />
+          <Property Name="InternalAuditSchedule" Type="varchar" MaxLength="50" />
+          <Property Name="ExternalAudits" Type="int" />
+          <Property Name="ExternalAuditsActionTaken" Type="varchar" MaxLength="50" />
+          <Property Name="ExternalAuditSchedule" Type="varchar" MaxLength="50" />
+          <Property Name="Compliance" Type="varchar" MaxLength="50" />
+          <Property Name="InternalMOU" Type="varchar" MaxLength="50" />
+          <Property Name="ArticleOfTheMonth" Type="varchar" MaxLength="50" />
+          <Property Name="SafetyInBusinessModel" Type="varchar" MaxLength="50" />
+          <Property Name="ReplaceOldConcreteSlabs" Type="varchar" MaxLength="50" />
+          <Property Name="ProtectionOfStructures" Type="varchar" MaxLength="50" />
+          <Property Name="DividingPlantIntoAreas" Type="varchar" MaxLength="50" />
+          <Property Name="CheckListForEngineers" Type="varchar" MaxLength="50" />
+          <Property Name="MockDrillsStatus" Type="varchar" MaxLength="50" />
+          <Property Name="FactoryOccupierDeclarationStatus" Type="varchar" MaxLength="50" />
+          <Property Name="ATROnDirectors" Type="varchar" MaxLength="50" />
+          <Property Name="Lock" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="int" Nullable="false" />
+          <Property Name="ProjCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="ProjName" Type="text" Nullable="false" />
+          <Property Name="EmpName" Type="text" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ProjCode">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="SafetyForm" Type="Self.SafetyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjCode" />
+            </Principal>
+            <Dependent Role="SafetyForm">
+              <PropertyRef Name="ProjCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectCode">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjCode" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ProjCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Foreign_ProjCode">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjCode" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="ProjCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NTPCProjectModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SafetyForm" EntityType="Self.SafetyForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ProjCode" Association="Self.FK_ProjCode">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="SafetyForm" EntitySet="SafetyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectCode" Association="Self.FK_ProjectCode">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Foreign_ProjCode" Association="Self.Foreign_ProjCode">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NTPCProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="NTPCProjectEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Projects" EntityType="NTPCProjectModel.Project" />
+          <EntitySet Name="SafetyForms" EntityType="NTPCProjectModel.SafetyForm" />
+          <AssociationSet Name="FK_ProjCode" Association="NTPCProjectModel.FK_ProjCode">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="SafetyForm" EntitySet="SafetyForms" />
+          </AssociationSet>
+          <EntitySet Name="Reports" EntityType="NTPCProjectModel.Report" />
+          <AssociationSet Name="Foreign_ProjCode" Association="NTPCProjectModel.Foreign_ProjCode">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Report" EntitySet="Reports" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="NTPCProjectModel.User" />
+          <AssociationSet Name="FK_ProjectCode" Association="NTPCProjectModel.FK_ProjectCode">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjCode" />
+          </Key>
+          <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="ProjName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SafetyHead" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SafetyForms" Relationship="NTPCProjectModel.FK_ProjCode" FromRole="Project" ToRole="SafetyForm" />
+          <NavigationProperty Name="Reports" Relationship="NTPCProjectModel.Foreign_ProjCode" FromRole="Project" ToRole="Report" />
+          <NavigationProperty Name="Users" Relationship="NTPCProjectModel.FK_ProjectCode" FromRole="Project" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SafetyForm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SafetyTip" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TrainingsToTrainers" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RiskGovernance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrainingToContractor" Type="Int32" />
+          <Property Name="TrainingToNTPCEng" Type="Int32" />
+          <Property Name="TrainingToHods" Type="Int32" />
+          <Property Name="SafetyPolicyDisplay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartOfMeetingsWithSafety" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DistributionOfPPES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryWithPPES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SafetyControlRoomFunc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScreeningOfSafetyFilms" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OverHaulsUnderDUPONT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SafetyContractsMgmt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RevisedSafetyProvisions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SafetyProcessMgmt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InternalAudits" Type="Int32" />
+          <Property Name="IntenalAuditsActionTaken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InternalAuditSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalAudits" Type="Int32" />
+          <Property Name="ExternalAuditsActionTaken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalAuditSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Compliance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InternalMOU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArticleOfTheMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SafetyInBusinessModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReplaceOldConcreteSlabs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProtectionOfStructures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DividingPlantIntoAreas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CheckListForEngineers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MockDrillsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FactoryOccupierDeclarationStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATROnDirectors" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lock" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="NTPCProjectModel.FK_ProjCode" FromRole="SafetyForm" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_ProjCode">
+          <End Type="NTPCProjectModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="NTPCProjectModel.SafetyForm" Role="SafetyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjCode" />
+            </Principal>
+            <Dependent Role="SafetyForm">
+              <PropertyRef Name="ProjCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="ProjName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastSubmitDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsThisMonthReport" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="NTPCProjectModel.Foreign_ProjCode" FromRole="Report" ToRole="Project" />
+        </EntityType>
+        <Association Name="Foreign_ProjCode">
+          <End Type="NTPCProjectModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="NTPCProjectModel.Report" Role="Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjCode" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="ProjCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="EmpID" />
+          </Key>
+          <Property Name="EmpID" Type="Int32" Nullable="false" />
+          <Property Name="ProjCode" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="ProjName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmpName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Admin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="NTPCProjectModel.FK_ProjectCode" FromRole="User" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_ProjectCode">
+          <End Type="NTPCProjectModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="NTPCProjectModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjCode" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ProjCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NTPCProjectModelStoreContainer" CdmEntityContainer="NTPCProjectEntities1">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="NTPCProjectModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="NTPCProjectModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="SafetyHead" ColumnName="SafetyHead" />
+                <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+                <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SafetyForms">
+            <EntityTypeMapping TypeName="NTPCProjectModel.SafetyForm">
+              <MappingFragment StoreEntitySet="SafetyForm">
+                <ScalarProperty Name="Lock" ColumnName="Lock" />
+                <ScalarProperty Name="ATROnDirectors" ColumnName="ATROnDirectors" />
+                <ScalarProperty Name="FactoryOccupierDeclarationStatus" ColumnName="FactoryOccupierDeclarationStatus" />
+                <ScalarProperty Name="MockDrillsStatus" ColumnName="MockDrillsStatus" />
+                <ScalarProperty Name="CheckListForEngineers" ColumnName="CheckListForEngineers" />
+                <ScalarProperty Name="DividingPlantIntoAreas" ColumnName="DividingPlantIntoAreas" />
+                <ScalarProperty Name="ProtectionOfStructures" ColumnName="ProtectionOfStructures" />
+                <ScalarProperty Name="ReplaceOldConcreteSlabs" ColumnName="ReplaceOldConcreteSlabs" />
+                <ScalarProperty Name="SafetyInBusinessModel" ColumnName="SafetyInBusinessModel" />
+                <ScalarProperty Name="ArticleOfTheMonth" ColumnName="ArticleOfTheMonth" />
+                <ScalarProperty Name="InternalMOU" ColumnName="InternalMOU" />
+                <ScalarProperty Name="Compliance" ColumnName="Compliance" />
+                <ScalarProperty Name="ExternalAuditSchedule" ColumnName="ExternalAuditSchedule" />
+                <ScalarProperty Name="ExternalAuditsActionTaken" ColumnName="ExternalAuditsActionTaken" />
+                <ScalarProperty Name="ExternalAudits" ColumnName="ExternalAudits" />
+                <ScalarProperty Name="InternalAuditSchedule" ColumnName="InternalAuditSchedule" />
+                <ScalarProperty Name="IntenalAuditsActionTaken" ColumnName="IntenalAuditsActionTaken" />
+                <ScalarProperty Name="InternalAudits" ColumnName="InternalAudits" />
+                <ScalarProperty Name="SafetyProcessMgmt" ColumnName="SafetyProcessMgmt" />
+                <ScalarProperty Name="RevisedSafetyProvisions" ColumnName="RevisedSafetyProvisions" />
+                <ScalarProperty Name="SafetyContractsMgmt" ColumnName="SafetyContractsMgmt" />
+                <ScalarProperty Name="OverHaulsUnderDUPONT" ColumnName="OverHaulsUnderDUPONT" />
+                <ScalarProperty Name="ScreeningOfSafetyFilms" ColumnName="ScreeningOfSafetyFilms" />
+                <ScalarProperty Name="SafetyControlRoomFunc" ColumnName="SafetyControlRoomFunc" />
+                <ScalarProperty Name="EntryWithPPES" ColumnName="EntryWithPPES" />
+                <ScalarProperty Name="DistributionOfPPES" ColumnName="DistributionOfPPES" />
+                <ScalarProperty Name="StartOfMeetingsWithSafety" ColumnName="StartOfMeetingsWithSafety" />
+                <ScalarProperty Name="SafetyPolicyDisplay" ColumnName="SafetyPolicyDisplay" />
+                <ScalarProperty Name="TrainingToHods" ColumnName="TrainingToHods" />
+                <ScalarProperty Name="TrainingToNTPCEng" ColumnName="TrainingToNTPCEng" />
+                <ScalarProperty Name="TrainingToContractor" ColumnName="TrainingToContractor" />
+                <ScalarProperty Name="RiskGovernance" ColumnName="RiskGovernance" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TrainingsToTrainers" ColumnName="TrainingsToTrainers" />
+                <ScalarProperty Name="SafetyTip" ColumnName="SafetyTip" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="NTPCProjectModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="IsThisMonthReport" ColumnName="IsThisMonthReport" />
+                <ScalarProperty Name="LastSubmitDate" ColumnName="LastSubmitDate" />
+                <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+                <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NTPCProjectModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+                <ScalarProperty Name="ProjCode" ColumnName="ProjCode" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
