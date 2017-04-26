@@ -19,6 +19,20 @@ namespace NTPC_SAFETY.Controllers
         {
 
             var reports = db.Reports.Include(r => r.Project);
+
+            foreach(Report rep in reports)
+            {
+                if (rep.LastSubmitDate.Month == System.DateTime.Now.Month && rep.LastSubmitDate.Year == System.DateTime.Now.Year)
+                {
+                    rep.IsThisMonthReport = true;
+                    ViewBag.ReportUpdated = "Report Updated! ";
+                }
+                else
+                    rep.IsThisMonthReport = false;
+            }
+
+       
+
             return View(reports.ToList());
         }
         
